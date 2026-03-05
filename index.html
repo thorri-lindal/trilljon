@@ -8,8 +8,8 @@
 <style>
 /* ── Reset & Base ──────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+button, .upgrade-row, .action-item, .ticker-btn, .tax-cell, .chip { touch-action: manipulation; }
 
-  
 :root {
   --navy:      #003366;
   --navy-dark: #00244d;
@@ -273,6 +273,7 @@ body {
   font-family: inherit;
   cursor: pointer;
   letter-spacing: 0.3px;
+  touch-action: manipulation;
   transition: background 0.15s, transform 0.08s, box-shadow 0.1s;
   box-shadow: 0 3px 0 var(--navy-dark);
   display: flex;
@@ -794,9 +795,102 @@ body {
 }
 
 /* ── RESPONSIVE ─────────────────────────────────────────────────────────── */
+/* ── FLOATING MOBILE BAR ────────────────────────────────────────────────── */
+.float-bar {
+  display: none;
+}
+
 @media (max-width: 660px) {
-  .page-wrap { flex-direction: column; }
-  .sidebar   { width: 100%; }
+  .float-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--navy);
+    border-top: 2px solid var(--gold);
+    padding: 8px 14px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    z-index: 200;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+  }
+
+  .float-bar-isk {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  .float-bar-label {
+    font-size: 0.68rem;
+    color: var(--blue-mid);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .float-bar-progress {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+  }
+
+  .float-bar-track {
+    background: rgba(255,255,255,0.15);
+    border-radius: 3px;
+    height: 6px;
+    overflow: hidden;
+  }
+
+  .float-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--navy-mid), var(--gold));
+    width: 0%;
+    transition: width 0.4s ease;
+  }
+
+  .float-bar-pct {
+    font-size: 0.65rem;
+    color: var(--blue-mid);
+    text-align: right;
+  }
+
+  /* push page content up so it's not hidden behind the bar */
+  body { padding-bottom: 58px; }
+}
+
+@media (max-width: 660px) {
+  .page-wrap      { flex-direction: column; padding: 12px; gap: 14px; }
+  .sidebar        { width: 100%; }
+  .main-content   { width: 100%; }
+
+  .header-inner   { padding: 10px 14px; gap: 10px; }
+  .logo-emblem    { width: 38px; height: 38px; }
+  .logo-title     { font-size: 1.05rem; }
+  .logo-subtitle  { font-size: 0.7rem; }
+  .btn-new-term   { font-size: 0.72rem; padding: 5px 10px; }
+
+  .isk-amount     { font-size: 1.6rem; }
+
+  .upgrade-row    { padding: 8px 10px; }
+  .upgrade-name   { font-size: 0.82rem; }
+  .upgrade-desc   { font-size: 0.7rem; }
+
+  .action-item    { padding: 8px 10px; }
+  .action-name    { font-size: 0.82rem; }
+  .action-desc    { font-size: 0.72rem; }
+
+  .modal-box      { padding: 0; }
+  .modal-body     { padding: 14px 12px; }
+  .modal-footer   { padding: 8px 12px; }
+  .stock-tickers  { gap: 5px; }
+  .ticker-btn     { padding: 7px 5px; min-width: 58px; }
+  .ticker-name    { font-size: 0.8rem; }
+  .ticker-label   { font-size: 0.62rem; }
 }
 </style>
 </head>
@@ -1020,6 +1114,20 @@ body {
     <div class="win-footer">
       <button class="btn-primary" onclick="restartGame()">Hefja nýtt kjörtímabil</button>
     </div>
+  </div>
+</div>
+
+<!-- ── FLOATING MOBILE BAR ───────────────────────────────────────────────── -->
+<div class="float-bar">
+  <div>
+    <div class="float-bar-label">Fjárhæð</div>
+    <div class="float-bar-isk" id="floatBarIsk">0 ISK</div>
+  </div>
+  <div class="float-bar-progress">
+    <div class="float-bar-track">
+      <div class="float-bar-fill" id="floatBarFill"></div>
+    </div>
+    <div class="float-bar-pct" id="floatBarPct">0%</div>
   </div>
 </div>
 
@@ -1526,6 +1634,12 @@ function updateDisplay() {
     fmt(isk) + ' / ' + fmt(WIN_AMOUNT) + ' ISK';
 
   updateSpecialCards();
+
+  // Floating mobile bar
+  const pct2 = Math.min(isk / WIN_AMOUNT * 100, 100);
+  document.getElementById('floatBarIsk').textContent  = fmt(isk) + ' ISK';
+  document.getElementById('floatBarFill').style.width = pct2.toFixed(2) + '%';
+  document.getElementById('floatBarPct').textContent  = pct2.toFixed(1) + '%';
 }
 
 // ════════════════════════════════════════════════════════════
