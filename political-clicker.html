@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viltu stela trilljón?</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & Base ──────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:      #003366;
+  --navy-dark: #00244d;
+  --navy-mid:  #004080;
+  --blue-lt:   #e8f0f8;
+  --blue-mid:  #c0d4ea;
+  --red:       #b52025;
+  --red-lt:    #f9e8e8;
+  --gold:      #c8a84b;
+  --white:     #ffffff;
+  --gray-100:  #f5f5f5;
+  --gray-200:  #e8e8e8;
+  --gray-400:  #aaaaaa;
+  --gray-600:  #666666;
+  --gray-800:  #333333;
+  --text:      #1a1a1a;
+  --green:     #1e6b2e;
+  --green-lt:  #e8f5ea;
+  --shadow:    0 1px 4px rgba(0,0,0,0.12);
+  --shadow-md: 0 2px 10px rgba(0,0,0,0.14);
+}
+
+body {
+  font-family: 'Source Sans 3', Arial, sans-serif;
+  font-size: 15px;
+  color: var(--text);
+  background: var(--gray-100);
+  min-height: 100vh;
+}
+
+/* ── SITE HEADER ────────────────────────────────────────────────────────── */
+.site-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 0;
+  border-bottom: 3px solid var(--gold);
+}
+
+.header-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo-emblem {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+}
+
+.logo-text-block {}
+
+.logo-title {
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.logo-subtitle {
+  font-size: 0.78rem;
+  color: var(--blue-mid);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.header-right {
+  font-size: 0.8rem;
+  color: var(--blue-mid);
+  text-align: right;
+  line-height: 1.6;
+}
+
+.btn-new-term {
+  background: transparent;
+  border: 1px solid var(--gold);
+  border-radius: 3px;
+  color: var(--gold);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-new-term:hover { background: var(--gold); color: var(--navy-dark); }
+
+/* ── NAV BAR ────────────────────────────────────────────────────────────── */
+.site-nav {
+  background: var(--navy-dark);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.nav-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  gap: 0;
+}
+
+.nav-item {
+  color: #ccd9eb;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 10px 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: default;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.nav-item:hover    { color: #fff; border-bottom-color: var(--gold); }
+.nav-item.active   { color: #fff; border-bottom-color: var(--gold); }
+
+/* ── BREADCRUMB ─────────────────────────────────────────────────────────── */
+.breadcrumb {
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.breadcrumb-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 8px 24px;
+  font-size: 0.78rem;
+  color: var(--gray-600);
+}
+
+.breadcrumb-inner span { color: var(--navy); font-weight: 600; }
+
+/* ── PAGE LAYOUT ────────────────────────────────────────────────────────── */
+.page-wrap {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 24px 24px 40px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* ── LEFT SIDEBAR ───────────────────────────────────────────────────────── */
+.sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── CARD ───────────────────────────────────────────────────────────────── */
+.card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-top: 3px solid var(--navy);
+  box-shadow: var(--shadow);
+}
+
+.card-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 9px 14px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.card-body { padding: 16px 14px; }
+
+/* ── ISK DISPLAY ────────────────────────────────────────────────────────── */
+.isk-counter {
+  text-align: center;
+  padding: 14px;
+}
+
+.isk-label-sm {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gray-600);
+  margin-bottom: 4px;
+}
+
+.isk-amount {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1;
+}
+
+.isk-unit {
+  font-size: 0.85rem;
+  color: var(--gray-600);
+  margin-top: 2px;
+}
+
+.ips-line {
+  margin-top: 6px;
+  font-size: 0.82rem;
+  color: var(--green);
+  font-weight: 600;
+}
+
+/* ── PROGRESS ───────────────────────────────────────────────────────────── */
+.progress-section { padding: 0 14px 14px; }
+
+.progress-track {
+  background: var(--gray-200);
+  border-radius: 3px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--navy-mid), var(--gold));
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+.progress-caption {
+  font-size: 0.72rem;
+  color: var(--gray-600);
+  text-align: center;
+  margin-top: 5px;
+}
+
+/* ── COLLECT BUTTON ─────────────────────────────────────────────────────── */
+.collect-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 14px;
+}
+
+.collect-btn {
+  background: var(--navy);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+  padding: 16px 10px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  transition: background 0.15s, transform 0.08s, box-shadow 0.1s;
+  box-shadow: 0 3px 0 var(--navy-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.collect-btn:hover  { background: var(--navy-mid); }
+.collect-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--navy-dark); }
+
+.click-value-line {
+  font-size: 0.78rem;
+  color: var(--gray-600);
+  text-align: center;
+}
+
+.married-badge {
+  display: none;
+  background: var(--red-lt);
+  border: 1px solid var(--red);
+  border-radius: 3px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  color: var(--red);
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+}
+.married-badge.active { display: block; }
+
+/* ── STATS TABLE ────────────────────────────────────────────────────────── */
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.stats-table td {
+  padding: 5px 0;
+  border-bottom: 1px solid var(--gray-200);
+  color: var(--gray-600);
+}
+
+.stats-table td:last-child {
+  color: var(--navy);
+  font-weight: 700;
+  text-align: right;
+}
+
+.stats-table tr:last-child td { border-bottom: none; }
+
+/* ── SPECIAL ACTIONS ────────────────────────────────────────────────────── */
+.action-item {
+  border-bottom: 1px solid var(--gray-200);
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: background 0.12s;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.action-item:last-child  { border-bottom: none; }
+.action-item:hover:not(.locked) { background: var(--blue-lt); }
+.action-item.locked      { opacity: 0.45; cursor: not-allowed; }
+
+.action-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.action-text {}
+
+.action-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.action-desc {
+  font-size: 0.74rem;
+  color: var(--gray-600);
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+.action-meta {
+  font-size: 0.72rem;
+  margin-top: 3px;
+  color: var(--green);
+  font-weight: 600;
+}
+
+.action-meta.warn  { color: var(--red); }
+.action-meta.muted { color: var(--gray-400); }
+
+/* ── MAIN CONTENT ───────────────────────────────────────────────────────── */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+.section-heading {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gray-600);
+  border-bottom: 1px solid var(--gray-200);
+  padding-bottom: 5px;
+  margin-bottom: 2px;
+}
+
+/* ── UPGRADE LIST ───────────────────────────────────────────────────────── */
+.upgrade-list {}
+
+.upgrade-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--gray-200);
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.upgrade-row:last-child { border-bottom: none; }
+.upgrade-row:hover:not(.disabled) { background: var(--blue-lt); }
+.upgrade-row.disabled   { opacity: 0.4; cursor: not-allowed; }
+.upgrade-row.affordable { background: var(--green-lt); }
+.upgrade-row.affordable:hover { background: #d8eeda; }
+
+.upgrade-icon-col {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--blue-lt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.upgrade-row.affordable .upgrade-icon-col { background: var(--green-lt); }
+
+.upgrade-info { flex: 1; min-width: 0; }
+
+.upgrade-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gray-800);
+}
+
+.upgrade-desc {
+  font-size: 0.73rem;
+  color: var(--gray-600);
+  margin-top: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.upgrade-owned {
+  font-size: 0.7rem;
+  color: var(--green);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.upgrade-cost-col {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.cost-tag {
+  display: inline-block;
+  background: var(--navy);
+  color: #fff;
+  border-radius: 3px;
+  padding: 3px 9px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.upgrade-row.affordable .cost-tag { background: var(--green); }
+.upgrade-row.disabled   .cost-tag { background: var(--gray-400); }
+
+/* ── FLOATING TEXT ──────────────────────────────────────────────────────── */
+.float-text {
+  position: fixed;
+  pointer-events: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--navy);
+  background: rgba(255,255,255,0.9);
+  padding: 2px 8px;
+  border-radius: 3px;
+  border: 1px solid var(--blue-mid);
+  animation: floatUp 1s ease-out forwards;
+  z-index: 999;
+  font-family: inherit;
+}
+
+@keyframes floatUp {
+  0%   { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-50px); }
+}
+
+/* ── MODAL ──────────────────────────────────────────────────────────────── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,20,50,0.6);
+  z-index: 500;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.modal-overlay.show { display: flex; }
+
+.modal-box {
+  background: var(--white);
+  border-top: 4px solid var(--navy);
+  box-shadow: var(--shadow-md);
+  max-width: 520px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 12px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 { font-size: 1rem; font-weight: 700; }
+
+.modal-close-x {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 4px;
+  opacity: 0.7;
+}
+.modal-close-x:hover { opacity: 1; }
+
+.modal-body { padding: 20px 18px; }
+
+.modal-desc {
+  font-size: 0.85rem;
+  color: var(--gray-600);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.modal-footer {
+  background: var(--gray-100);
+  border-top: 1px solid var(--gray-200);
+  padding: 10px 18px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: var(--navy);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 8px 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-primary:hover { background: var(--navy-mid); }
+
+.btn-secondary {
+  background: var(--white);
+  color: var(--gray-800);
+  border: 1px solid var(--gray-400);
+  border-radius: 3px;
+  padding: 8px 18px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+.btn-secondary:hover { background: var(--gray-100); }
+
+.btn-danger {
+  background: var(--red);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 8px 18px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+}
+.btn-danger:hover { background: #8b0000; }
+
+/* ── TAX GRID ───────────────────────────────────────────────────────────── */
+.tax-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.tax-cell {
+  background: var(--blue-lt);
+  border: 1px solid var(--blue-mid);
+  border-radius: 4px;
+  padding: 16px 6px;
+  cursor: pointer;
+  font-size: 1.3rem;
+  text-align: center;
+  transition: background 0.12s, border-color 0.12s;
+  user-select: none;
+}
+
+.tax-cell:hover:not(.revealed-win):not(.revealed-lose):not(.revealed-meh) {
+  background: var(--blue-mid);
+  border-color: var(--navy);
+}
+
+.tax-cell.revealed-win  { background: var(--green-lt); border-color: var(--green); }
+.tax-cell.revealed-lose { background: var(--red-lt);   border-color: var(--red); }
+.tax-cell.revealed-meh  { background: var(--gray-200); border-color: var(--gray-400); }
+
+#taxStatus {
+  font-size: 0.85rem;
+  min-height: 28px;
+  margin-bottom: 4px;
+  color: var(--gray-600);
+}
+
+/* ── STOCK TICKERS ──────────────────────────────────────────────────────── */
+.stock-tickers {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 14px 0;
+}
+
+.ticker-btn {
+  flex: 1 1 70px;
+  min-width: 70px;
+  background: var(--blue-lt);
+  border: 1px solid var(--blue-mid);
+  border-radius: 4px;
+  padding: 10px 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.12s, border-color 0.12s;
+}
+
+.ticker-btn:hover   { background: var(--blue-mid); border-color: var(--navy); }
+.ticker-btn.selected { background: var(--navy); border-color: var(--navy-dark); }
+.ticker-btn.selected .ticker-name  { color: #fff; }
+.ticker-btn.selected .ticker-label { color: var(--blue-mid); }
+.ticker-btn.selected .ticker-trend { color: #aae; }
+.ticker-btn.rigged-tick { background: var(--red-lt); border-color: var(--red); }
+
+.ticker-name  { font-size: 0.9rem; font-weight: 700; color: var(--navy); }
+.ticker-label { font-size: 0.68rem; color: var(--gray-600); margin-top: 2px; }
+.ticker-trend { font-size: 0.75rem; margin-top: 4px; font-weight: 600; }
+
+.bet-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.bet-row input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid var(--gray-400);
+  border-radius: 3px;
+  padding: 8px 10px;
+  font-size: 0.88rem;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--white);
+}
+.bet-row input:focus { outline: 2px solid var(--navy); outline-offset: 1px; }
+
+.bet-chips {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+  align-items: center;
+}
+
+.chip {
+  border: 1px solid var(--gray-400);
+  border-radius: 3px;
+  padding: 3px 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  background: var(--white);
+  color: var(--gray-800);
+  white-space: nowrap;
+}
+.chip:hover { background: var(--gray-200); }
+.chip.minus { color: var(--red); border-color: var(--red); }
+.chip.minus:hover { background: var(--red-lt); }
+.chip.plus  { color: var(--green); border-color: var(--green); }
+.chip.plus:hover  { background: var(--green-lt); }
+.chip.max   { color: var(--navy); border-color: var(--navy); margin-left: auto; }
+.chip.max:hover   { background: var(--blue-lt); }
+
+#stockResult {
+  min-height: 32px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 6px 0;
+  color: var(--gray-600);
+}
+#stockResult.win-res  { color: var(--green); }
+#stockResult.lose-res { color: var(--red); }
+
+.fix-market-btn {
+  background: var(--red-lt);
+  border: 1px solid var(--red);
+  border-radius: 3px;
+  padding: 5px 12px;
+  color: var(--red);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  margin-top: 4px;
+}
+.fix-market-btn:hover { background: var(--red); color: #fff; }
+
+/* ── WIN OVERLAY ────────────────────────────────────────────────────────── */
+.win-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,20,50,0.75);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.win-overlay.show { display: flex; }
+
+.win-box {
+  background: var(--white);
+  border-top: 5px solid var(--gold);
+  box-shadow: var(--shadow-md);
+  max-width: 520px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.win-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 18px 24px;
+  text-align: center;
+}
+
+.win-header h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 4px; }
+.win-header p  { font-size: 0.82rem; color: var(--blue-mid); }
+
+.win-body {
+  padding: 24px;
+  font-size: 0.9rem;
+  color: var(--gray-600);
+  line-height: 1.65;
+  text-align: center;
+}
+
+.win-body strong { color: var(--navy); }
+.win-time { font-size: 1rem; color: var(--navy); font-weight: 700; margin: 14px 0; }
+
+.win-footer {
+  background: var(--gray-100);
+  border-top: 1px solid var(--gray-200);
+  padding: 14px 24px;
+  text-align: center;
+}
+
+/* ── FOOTER ─────────────────────────────────────────────────────────────── */
+.site-footer {
+  background: var(--navy-dark);
+  color: var(--blue-mid);
+  text-align: center;
+  padding: 14px 24px;
+  font-size: 0.75rem;
+  margin-top: auto;
+  border-top: 2px solid var(--gold);
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────────────────────────── */
+@media (max-width: 660px) {
+  .page-wrap { flex-direction: column; }
+  .sidebar   { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ───────────────────────────────────────────────────────────── -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-logo">
+      <!-- Coat of arms SVG (simplified Icelandic style) -->
+      <svg class="logo-emblem" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="52" height="52" rx="4" fill="#002244"/>
+        <path d="M26 6 L46 18 L46 36 L26 48 L6 36 L6 18 Z" fill="none" stroke="#c8a84b" stroke-width="1.5"/>
+        <path d="M26 12 L40 21 L40 35 L26 44 L12 35 L12 21 Z" fill="#003875"/>
+        <!-- Cross (Icelandic flag cross) -->
+        <rect x="11" y="23" width="30" height="6" fill="#c8a84b" opacity="0.8"/>
+        <rect x="21" y="13" width="6" height="26" fill="#c8a84b" opacity="0.8"/>
+        <rect x="12" y="24" width="28" height="4" fill="#b52025" opacity="0.7"/>
+        <rect x="22" y="14" width="4" height="24" fill="#b52025" opacity="0.7"/>
+      </svg>
+      <div class="logo-text-block">
+        <div class="logo-title">Viltu stela trilljón?</div>
+        <div class="logo-subtitle">Ísland</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <button class="btn-new-term" onclick="confirmNewTerm()">Nýtt kjörtímabil</button>
+    </div>
+  </div>
+</header>
+
+
+
+<!-- ── PAGE ─────────────────────────────────────────────────────────────── -->
+<div class="page-wrap">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- ISK counter -->
+    <div class="card">
+      <div class="card-header">Fjárhæð í vörslu</div>
+      <div class="isk-counter">
+        <div class="isk-label-sm">Innheimtar fjármunir</div>
+        <div class="isk-amount" id="iskDisplay">0</div>
+        <div class="isk-unit">ISK</div>
+        <div class="ips-line" id="ipsDisplay">+0 ISK/sec</div>
+      </div>
+      <div class="progress-section">
+        <div class="progress-track">
+          <div class="progress-fill" id="progressBar"></div>
+        </div>
+        <div class="progress-caption" id="progressLabel">0 / 2.000.000.000 ISK</div>
+      </div>
+    </div>
+
+    <!-- Collect button -->
+    <div class="card">
+      <div class="card-header">Framkvæmd</div>
+      <div class="collect-wrap">
+        <button class="collect-btn" id="mainBtn" onclick="handleClick(event)">
+          💼 Innheimta fjármuni
+        </button>
+        <div class="click-value-line" id="clickValueDisplay">+1 ISK per smell</div>
+        <div class="married-badge" id="marriedBadge">💍 Bankaeigandi maki: 2× tekjur</div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="card">
+      <div class="card-header">Tölfræði</div>
+      <div class="card-body">
+        <table class="stats-table">
+          <tr><td>Spillingarstig</td><td id="statPrestige">0</td></tr>
+          <tr><td>Tekjumargfaldari</td><td id="statMulti">×1.00</td></tr>
+          <tr><td>Smellur</td><td id="totalClicks">0</td></tr>
+          <tr><td>Heildartekjur</td><td id="totalEarned">0 ISK</td></tr>
+          <tr><td>Per smell</td><td id="statClick">1 ISK</td></tr>
+          <tr><td>ISK/sek</td><td id="statIPS">0</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Special actions -->
+    <div class="card">
+      <div class="card-header">Sérstakar aðgerðir</div>
+
+      <div class="action-item locked" id="taxCard" onclick="openTaxFraud()">
+        <div class="action-icon">📋</div>
+        <div class="action-text">
+          <div class="action-name">Skattsvik</div>
+          <div class="action-desc">Skila sköttum með sköpunarkraft. Sneiðu hjá endurskoðanda.</div>
+          <div class="action-meta muted" id="taxMeta">Opnast við 500 ISK</div>
+        </div>
+      </div>
+
+      <div class="action-item locked" id="stockCard" onclick="openStockMarket()">
+        <div class="action-icon">📈</div>
+        <div class="action-text">
+          <div class="action-name">Hlutabréfamarkaður</div>
+          <div class="action-desc">Innsherji er bara refsivert ef þú ert uppvís.</div>
+          <div class="action-meta muted" id="stockMeta">Opnast við 10.000 ISK</div>
+        </div>
+      </div>
+
+      <div class="action-item locked" id="marryCard" onclick="marryBanker()">
+        <div class="action-icon">💍</div>
+        <div class="action-text">
+          <div class="action-name">Giftast bankamanni</div>
+          <div class="action-desc">Hjónaband og 2× tekjumargfaldari. Eitt skipti — lífstíðarfjárfesting.</div>
+          <div class="action-meta muted" id="marryMeta">Opnast við 100.000 ISK</div>
+        </div>
+      </div>
+
+      <div class="action-item locked" id="prestigeCard" onclick="doPrestige()">
+        <div class="action-icon">🏅</div>
+        <div class="action-text">
+          <div class="action-name">Fara aftur í kjör</div>
+          <div class="action-desc">Byrjaðu upp á nýtt með +50% varanlegum tekjumargfaldara. Spillingarstig heldur.</div>
+          <div class="action-meta muted" id="prestigeMeta">Opnast við 250M ISK</div>
+        </div>
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <!-- Click upgrades -->
+    <div class="card">
+      <div class="card-header">Smellur uppfærslur — Auka ISK per smell</div>
+      <div class="upgrade-list" id="clickUpgrades"></div>
+    </div>
+
+    <!-- Auto upgrades -->
+    <div class="card">
+      <div class="card-header">Sjálfvirkar tekjur — ISK á sekúndu</div>
+      <div class="upgrade-list" id="autoUpgrades"></div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ── FOOTER ────────────────────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <em style="opacity:0.5">Þetta er skopstæling</em>
+</footer>
+
+<!-- ── TAX FRAUD MODAL ───────────────────────────────────────────────────── -->
+<div class="modal-overlay" id="taxModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>📋 Skattsvik — Skapandi bókhald</h3>
+      <button class="modal-close-x" onclick="closeTaxFraud()">×</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-desc" id="taxInstructions">
+        Veðmál: <strong id="taxWagerDisplay">—</strong> ISK ·
+        Finndu 💰 til að tvöfalda veðmálið. Rekstu á 🔍 (endurskoðanda) og tapar öllu. 📄 = ekkert.
+      </p>
+      <div id="taxGrid" class="tax-grid"></div>
+      <div id="taxStatus"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeTaxFraud()">Loka bókhaldi</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── STOCK MODAL ───────────────────────────────────────────────────────── -->
+<div class="modal-overlay" id="stockModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="stockModalTitle">📈 Hlutabréfamarkaður</h3>
+      <button class="modal-close-x" onclick="closeStock()">×</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-desc" id="stockModalDesc">Veldu hlutabréf og settu veðmál. Vinnur = ×2. Tapar = farið.</p>
+
+      <div class="stock-tickers" id="stockTickers"></div>
+
+      <div class="bet-row">
+        <input type="number" id="betInput" placeholder="Upphæð (ISK)" min="1" />
+        <button class="btn-primary" onclick="placeBet()">Setja veðmál</button>
+      </div>
+      <div class="bet-chips">
+        <button class="chip minus" onclick="addBet(-1000)">−1K</button>
+        <button class="chip minus" onclick="addBet(-10000)">−10K</button>
+        <button class="chip minus" onclick="addBet(-100000)">−100K</button>
+        <button class="chip plus"  onclick="addBet(1000)">+1K</button>
+        <button class="chip plus"  onclick="addBet(10000)">+10K</button>
+        <button class="chip plus"  onclick="addBet(100000)">+100K</button>
+        <button class="chip max"   onclick="addBet(Infinity)">Max</button>
+      </div>
+      <div id="stockFixRow"></div>
+      <div id="stockResult"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeStock()">Yfirgefa markað</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── WIN OVERLAY ───────────────────────────────────────────────────────── -->
+<div class="win-overlay" id="winOverlay">
+  <div class="win-box">
+    <div class="win-header">
+      <h2>🏆 Verkefni lokið</h2>
+      <p>Niðurstöður</p>
+    </div>
+    <div class="win-body">
+      <p>
+        Þú hefur fært <strong>2.000.000.000 ISK</strong> úr ríkissjóði
+        í röð nafnlausra reikninga erlendis.<br><br>
+        Ævisaga þín, <em>„Þjóna þjóðinni (mér)"</em>, er þegar meðseldar bók.
+        Minnisvarði er í smíðum — fjármagnaður af ráðuneytinu, að sjálfsögðu.
+      </p>
+      <div class="win-time">Time: <span id="finalTime">--</span></div>
+    </div>
+    <div class="win-footer">
+      <button class="btn-primary" onclick="restartGame()">Start New Term</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════════
+//  GAME STATE
+// ════════════════════════════════════════════════════════════
+const WIN_AMOUNT = 2_000_000_000;
+
+let isk = 0, totalEarned = 0, totalClicks = 0;
+let clickPower = 1, iskPerSec = 0, incomeMulti = 1;
+let gameWon = false, startTime = Date.now();
+
+let taxUnlocked = false, stockUnlocked = false;
+let marketRigged = false, married = false;
+let taxCooldown = false;
+let stockBetsPlaced = 0;
+let riggedStock = null;
+let taxGameActive = false, taxMultiplier = 1, taxRevealed = 0, taxWager = 0, taxBoard = [];
+
+let prestigeLevel = 0;  // persists across resets
+
+const TAX_COST          = 1_000;
+const MARRY_COST        = 500_000;
+const FIX_MARKET_COST   = 200_000;
+const FIX_BET_UNLOCK    = 5;
+const PRESTIGE_THRESHOLD = 250_000_000;
+const TAX_ICONS         = ['💰','💰','💰','🔍','🔍','🔍','📄','📄','📄','📄','📄','📄'];
+
+function calcIncomeMulti(level = prestigeLevel) {
+  const prestige = 1 + level * 0.5;
+  const marriage = married ? 2 : 1;
+  return prestige * marriage;
+}
+
+// ════════════════════════════════════════════════════════════
+//  UPGRADE DEFINITIONS
+// ════════════════════════════════════════════════════════════
+const clickUpgradeDefs = [
+  { id:'pocket',     icon:'🪙', name:'Vasapeningar',                desc:'Skim a little off every project budget.',            baseCost:10,         costMult:1.3,  clickBonus:1,     owned:0 },
+  { id:'invoice',    icon:'🧾', name:'Týnd kvittun',              desc:'Bill the ministry for services never rendered.',     baseCost:100,        costMult:1.35, clickBonus:5,     owned:0 },
+  { id:'consultant', icon:'👔', name:'Ráða frænda',               desc:'Your cousin is an "expert consultant".',             baseCost:500,        costMult:1.4,  clickBonus:20,    owned:0 },
+  { id:'offshore',   icon:'🏝️', name:'Aflandafélag',              desc:'Nothing says trust like a Cayman Islands LLC.',      baseCost:5_000,      costMult:1.4,  clickBonus:100,   owned:0 },
+  { id:'briefcase',  icon:'💼', name:'Íþróttataska af seðlum',    desc:'Untraceable cash, diplomatic immunity.',             baseCost:50_000,     costMult:1.45, clickBonus:500,   owned:0 },
+  { id:'pardon',     icon:'📜', name:'Tilbúinn fyrirgefningar ræða', desc:'Why worry when you can legislate away guilt?',    baseCost:1_000_000,  costMult:1.5,  clickBonus:5_000, owned:0 },
+];
+
+const autoUpgradeDefs = [
+  { id:'lobbyist', icon:'🤝', name:'Lobbíisti á launaskrá',  desc:'They call it networking.',                      baseCost:50,          costMult:1.15, ipsBonus:1,      owned:0 },
+  { id:'intern',   icon:'📚', name:'Ólaunaður starfskraftur', desc:'They work. You collect.',                      baseCost:250,         costMult:1.15, ipsBonus:5,      owned:0 },
+  { id:'shellco',  icon:'🏢', name:'Skúffufyrirtæki',        desc:'Incorporated in three countries. Taxed in none.', baseCost:2_000,     costMult:1.15, ipsBonus:20,     owned:0 },
+  { id:'ministry', icon:'🏛️', name:'Ný nefnd',               desc:"The ministry works for you.",                   baseCost:15_000,      costMult:1.15, ipsBonus:100,    owned:0 },
+  { id:'contract', icon:'✍️', name:'Opinbert útboð',         desc:"Competition is socialism.",                     baseCost:100_000,     costMult:1.15, ipsBonus:500,    owned:0 },
+  { id:'pension',  icon:'👴', name:'Lífeyrissjóðirnir',      desc:"They won't retire for decades anyway.",          baseCost:1_000_000,   costMult:1.15, ipsBonus:2_500,  owned:0 },
+  { id:'bank',     icon:'🏦', name:'Ríkisbankinn',           desc:"Why borrow when you ARE the bank?",             baseCost:25_000_000,  costMult:1.15, ipsBonus:20_000, owned:0 },
+];
+
+// ════════════════════════════════════════════════════════════
+//  HELPERS
+// ════════════════════════════════════════════════════════════
+function currentCost(def) {
+  return Math.floor(def.baseCost * Math.pow(def.costMult, def.owned));
+}
+
+function fmt(n) {
+  n = Math.floor(n);
+  if (n >= 1_000_000_000) return (n/1_000_000_000).toFixed(3)+'B';
+  if (n >= 1_000_000)     return (n/1_000_000).toFixed(2)+'M';
+  if (n >= 1_000)         return (n/1_000).toFixed(1)+'K';
+  return n.toLocaleString();
+}
+
+function spawnFloat(x, y, text) {
+  const el = document.createElement('div');
+  el.className   = 'float-text';
+  el.textContent = text;
+  el.style.left  = (x-20)+'px';
+  el.style.top   = (y-30)+'px';
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 1000);
+}
+
+function addIsk(amount) {
+  const g = amount * incomeMulti;
+  isk += g; totalEarned += g;
+  return g;
+}
+
+// ════════════════════════════════════════════════════════════
+//  MAIN CLICK
+// ════════════════════════════════════════════════════════════
+function handleClick(event) {
+  if (gameWon) return;
+  const g = addIsk(clickPower);
+  totalClicks++;
+  spawnFloat(event.clientX, event.clientY, '+'+fmt(g)+' ISK');
+  updateDisplay(); checkWin();
+}
+
+// ════════════════════════════════════════════════════════════
+//  UPGRADES
+// ════════════════════════════════════════════════════════════
+function buyClickUpgrade(def) {
+  const cost = currentCost(def);
+  if (isk < cost) return;
+  isk -= cost; def.owned++; clickPower += def.clickBonus;
+  updateDisplay(); renderUpgrades();
+}
+
+function buyAutoUpgrade(def) {
+  const cost = currentCost(def);
+  if (isk < cost) return;
+  isk -= cost; def.owned++; iskPerSec += def.ipsBonus;
+  updateDisplay(); renderUpgrades();
+}
+
+// Build upgrade rows once; update them in place every tick
+function buildUpgrades() {
+  const cc = document.getElementById('clickUpgrades');
+  const ac = document.getElementById('autoUpgrades');
+  cc.innerHTML = ''; ac.innerHTML = '';
+
+  for (const def of clickUpgradeDefs) {
+    const row = document.createElement('div');
+    row.className   = 'upgrade-row disabled';
+    row.dataset.id  = def.id;
+    row.innerHTML = `
+      <div class="upgrade-icon-col">${def.icon}</div>
+      <div class="upgrade-info">
+        <div class="upgrade-name">${def.name}</div>
+        <div class="upgrade-desc">${def.desc} · +${fmt(def.clickBonus)} ISK/click</div>
+        <div class="upgrade-owned"></div>
+      </div>
+      <div class="upgrade-cost-col"><span class="cost-tag"></span></div>`;
+    row.addEventListener('click', () => { if (!row.classList.contains('disabled')) buyClickUpgrade(def); });
+    cc.appendChild(row);
+  }
+
+  for (const def of autoUpgradeDefs) {
+    const row = document.createElement('div');
+    row.className   = 'upgrade-row disabled';
+    row.dataset.id  = def.id;
+    row.innerHTML = `
+      <div class="upgrade-icon-col">${def.icon}</div>
+      <div class="upgrade-info">
+        <div class="upgrade-name">${def.name}</div>
+        <div class="upgrade-desc">${def.desc} · +${fmt(def.ipsBonus)} ISK/sec</div>
+        <div class="upgrade-owned"></div>
+      </div>
+      <div class="upgrade-cost-col"><span class="cost-tag"></span></div>`;
+    row.addEventListener('click', () => { if (!row.classList.contains('disabled')) buyAutoUpgrade(def); });
+    ac.appendChild(row);
+  }
+}
+
+function renderUpgrades() {
+  const allDefs = [
+    ...clickUpgradeDefs.map(d => ({ def: d, type: 'click' })),
+    ...autoUpgradeDefs.map(d => ({ def: d, type: 'auto' })),
+  ];
+  for (const { def } of allDefs) {
+    const row = document.querySelector(`.upgrade-row[data-id="${def.id}"]`);
+    if (!row) continue;
+    const cost = currentCost(def);
+    const ok   = isk >= cost;
+    row.classList.toggle('affordable', ok);
+    row.classList.toggle('disabled', !ok);
+    row.querySelector('.upgrade-owned').textContent = def.owned > 0 ? 'Owned: ' + def.owned : '';
+    row.querySelector('.cost-tag').textContent = fmt(cost) + ' ISK';
+  }
+}
+
+// ════════════════════════════════════════════════════════════
+//  SPECIAL CARDS
+// ════════════════════════════════════════════════════════════
+function updateSpecialCards() {
+  const taxCard   = document.getElementById('taxCard');
+  const taxMeta   = document.getElementById('taxMeta');
+  const stockCard = document.getElementById('stockCard');
+  const stockMeta = document.getElementById('stockMeta');
+  const marryCard = document.getElementById('marryCard');
+  const marryMeta = document.getElementById('marryMeta');
+
+  if (isk >= 500 || taxUnlocked) {
+    taxUnlocked = true;
+    taxCard.classList.remove('locked');
+    if (taxCooldown) {
+      taxMeta.textContent = 'On cooldown…';
+      taxMeta.className   = 'action-meta warn';
+    } else {
+      taxMeta.textContent = 'Ready · Cost: '+fmt(TAX_COST)+' ISK';
+      taxMeta.className   = 'action-meta';
+    }
+  }
+
+  if (isk >= 10_000 || stockUnlocked) {
+    stockUnlocked = true;
+    stockCard.classList.remove('locked');
+    stockMeta.textContent = marketRigged ? '🎭 Market is rigged' : 'Open';
+    stockMeta.className   = 'action-meta';
+    stockMeta.style.color = marketRigged ? 'var(--red)' : 'var(--green)';
+  }
+
+  if (married) {
+    marryCard.classList.remove('locked');
+    marryCard.style.cursor = 'default';
+    marryMeta.textContent  = '💍 Happily (and lucratively) married';
+    marryMeta.className    = 'action-meta';
+    marryMeta.style.color  = 'var(--red)';
+  } else if (isk >= 100_000) {
+    marryCard.classList.remove('locked');
+    marryMeta.textContent = 'Cost: '+fmt(MARRY_COST)+' ISK';
+    marryMeta.className   = 'action-meta';
+    marryMeta.style.color = 'var(--navy)';
+  } else {
+    marryMeta.textContent   = 'Unlocks at 100,000 ISK';
+    marryMeta.className     = 'action-meta muted';
+  }
+
+  const prestigeCard = document.getElementById('prestigeCard');
+  const prestigeMeta = document.getElementById('prestigeMeta');
+  if (isk >= PRESTIGE_THRESHOLD) {
+    prestigeCard.classList.remove('locked');
+    prestigeMeta.textContent = `Level ${prestigeLevel + 1} → ×${calcIncomeMulti(prestigeLevel + 1).toFixed(1)} all income`;
+    prestigeMeta.className   = 'action-meta';
+    prestigeMeta.style.color = 'var(--gold)';
+  } else {
+    prestigeMeta.textContent = `Unlocks at ${fmt(PRESTIGE_THRESHOLD)} ISK`;
+    prestigeMeta.className   = 'action-meta muted';
+    prestigeMeta.style.color = '';
+  }
+}
+
+// ════════════════════════════════════════════════════════════
+//  TAX FRAUD
+// ════════════════════════════════════════════════════════════
+function openTaxFraud() {
+  if (!taxUnlocked || taxCooldown) return;
+  if (isk < TAX_COST) { alert('Not enough ISK!'); return; }
+  isk -= TAX_COST;
+  taxWager = TAX_COST; taxMultiplier = 1; taxRevealed = 0; taxGameActive = true;
+  taxBoard = [...TAX_ICONS].sort(() => Math.random()-0.5);
+  document.getElementById('taxWagerDisplay').textContent = fmt(taxWager);
+  renderTaxGrid();
+  document.getElementById('taxStatus').textContent = 'Click a document…';
+  document.getElementById('taxModal').classList.add('show');
+}
+
+function renderTaxGrid() {
+  const grid = document.getElementById('taxGrid');
+  grid.innerHTML = '';
+  taxBoard.forEach((icon, i) => {
+    const cell = document.createElement('div');
+    cell.className   = 'tax-cell';
+    cell.textContent = '📁';
+    cell.addEventListener('click', () => revealTaxCell(i));
+    grid.appendChild(cell);
+  });
+}
+
+function revealTaxCell(idx) {
+  if (!taxGameActive) return;
+  const cells = document.querySelectorAll('.tax-cell');
+  const cell  = cells[idx];
+  if (cell.dataset.done) return;
+  cell.dataset.done = '1';
+  const icon = taxBoard[idx];
+  cell.textContent = icon;
+
+  const st = document.getElementById('taxStatus');
+
+  if (icon === '💰') {
+    taxMultiplier *= 2; taxRevealed++;
+    cell.classList.add('revealed-win');
+    st.innerHTML = `💰 Margfaldari ×${taxMultiplier} — hugsanlegt: <strong>${fmt(taxWager * taxMultiplier)} ISK</strong>.
+      <button onclick="collectTaxWin()" style="margin-left:8px;padding:3px 10px;cursor:pointer;border-radius:3px;border:1px solid var(--green);background:var(--green-lt);color:var(--green);font-size:0.78rem;font-family:inherit">Collect Now</button>`;
+    if (taxRevealed === 3) collectTaxWin();
+  } else if (icon === '🔍') {
+    cell.classList.add('revealed-lose');
+    taxGameActive = false; revealAllTax();
+    st.innerHTML = `<span style="color:var(--red)">🔍 Auditor! You've been investigated. Wager lost.</span>`;
+    startTaxCooldown();
+  } else {
+    cell.classList.add('revealed-meh');
+    st.textContent = '📄 Nothing here. Keep looking…';
+  }
+}
+
+function collectTaxWin() {
+  if (!taxGameActive) return;
+  taxGameActive = false;
+  const win = taxWager * taxMultiplier;
+  addIsk(win);
+  revealAllTax();
+  document.getElementById('taxStatus').innerHTML =
+    `<span style="color:var(--green)">✅ Returns filed! +${fmt(win)} ISK collected.</span>`;
+  startTaxCooldown();
+}
+
+function revealAllTax() {
+  document.querySelectorAll('.tax-cell').forEach((c, i) => {
+    c.textContent  = taxBoard[i];
+    c.style.cursor = 'default';
+    if (!c.dataset.done) c.classList.add('revealed-meh');
+  });
+}
+
+function closeTaxFraud() {
+  document.getElementById('taxModal').classList.remove('show');
+}
+
+function startTaxCooldown() {
+  taxCooldown = true;
+  let s = 30;
+  const iv = setInterval(() => {
+    s--;
+    const el = document.getElementById('taxMeta');
+    if (el) el.textContent = `Cooldown: ${s}s`;
+    if (s <= 0) { clearInterval(iv); taxCooldown = false; }
+  }, 1000);
+}
+
+// ════════════════════════════════════════════════════════════
+//  STOCK MARKET
+// ════════════════════════════════════════════════════════════
+const stocks = [
+  { name:'CRPT', label:'CryptCorp',    trend:'+12%', upChance:0.55 },
+  { name:'BANK', label:'NationalBank', trend:'+3%',  upChance:0.52 },
+  { name:'OIL',  label:'PetroState',   trend:'-5%',  upChance:0.40 },
+  { name:'ARMS', label:'DefencePlc',   trend:'+8%',  upChance:0.50 },
+  { name:'MDIA', label:'StatMedia',    trend:'-2%',  upChance:0.45 },
+];
+
+let selectedStock = null;
+
+function openStockMarket() {
+  if (!stockUnlocked) return;
+  selectedStock = null;
+  document.getElementById('stockResult').textContent = '';
+  document.getElementById('betInput').value = '';
+
+  if (marketRigged) {
+    document.getElementById('stockModalTitle').textContent = '🎭 Lagfærður markaður';
+    document.getElementById('stockModalDesc').textContent =
+      'Market fixed. ' + riggedStock + ' is guaranteed to go up.';
+    document.getElementById('stockFixRow').innerHTML = '';
+  } else {
+    document.getElementById('stockModalTitle').textContent = '📈 Hlutabréfamarkaður';
+    document.getElementById('stockModalDesc').textContent =
+      'Pick a stock. Place a bet. Win = ×2. Lose = gone.';
+    updateFixRow();
+  }
+
+  renderStockTickers();
+  document.getElementById('stockModal').classList.add('show');
+}
+
+function updateFixRow() {
+  const row = document.getElementById('stockFixRow');
+  if (!marketRigged && stockBetsPlaced >= FIX_BET_UNLOCK) {
+    row.innerHTML = `<button class="fix-market-btn" onclick="fixMarket()">🎭 Laga markað (${fmt(FIX_MARKET_COST)} ISK)</button>`;
+  } else if (!marketRigged) {
+    row.innerHTML = `<div style="font-size:0.76rem;color:var(--gray-400);margin-bottom:8px">Rig Market unlocks after ${FIX_BET_UNLOCK} bets (${stockBetsPlaced}/${FIX_BET_UNLOCK})</div>`;
+  }
+}
+
+function renderStockTickers() {
+  const c = document.getElementById('stockTickers');
+  c.innerHTML = '';
+  stocks.forEach(s => {
+    const btn = document.createElement('div');
+    btn.className = 'ticker-btn';
+    if (selectedStock === s.name) btn.classList.add('selected');
+    if (marketRigged && s.name === riggedStock) btn.classList.add('rigged-tick');
+    const tc = s.trend.startsWith('+') ? 'var(--green)' : 'var(--red)';
+    btn.innerHTML = `
+      <div class="ticker-name">${s.name}</div>
+      <div class="ticker-label">${s.label}</div>
+      <div class="ticker-trend" style="color:${tc}">${s.trend}</div>
+      ${marketRigged && s.name===riggedStock ? '<div style="font-size:0.68rem;color:var(--red);margin-top:3px;font-weight:700">★ RIGGED</div>' : ''}`;
+    btn.addEventListener('click', () => { selectedStock = s.name; renderStockTickers(); });
+    c.appendChild(btn);
+  });
+}
+
+function addBet(amount) {
+  const input = document.getElementById('betInput');
+  const current = parseInt(input.value) || 0;
+  const next = amount === Infinity ? Math.floor(isk) : current + amount;
+  input.value = Math.max(0, next);
+}
+
+function placeBet() {
+  const resEl = document.getElementById('stockResult');
+  if (!selectedStock) { resEl.textContent = 'Pick a stock first!'; resEl.className=''; return; }
+  const betVal = parseInt(document.getElementById('betInput').value);
+  if (!betVal || betVal <= 0) { resEl.textContent = 'Enter a valid bet.'; resEl.className=''; return; }
+  if (betVal > isk) { resEl.textContent = 'Not enough ISK.'; resEl.className='lose-res'; return; }
+
+  const stock = stocks.find(s => s.name === selectedStock);
+  isk -= betVal; stockBetsPlaced++;
+
+  let win = marketRigged ? (selectedStock === riggedStock) : Math.random() < stock.upChance;
+
+  if (win) {
+    const g = addIsk(betVal * 2);
+    resEl.innerHTML = `📈 ${stock.name} surged! +${fmt(g)} ISK`;
+    resEl.className = 'win-res';
+  } else {
+    resEl.innerHTML = `📉 ${stock.name} crashed. Lost ${fmt(betVal)} ISK.`;
+    resEl.className = 'lose-res';
+  }
+
+  updateFixRow();
+}
+
+function fixMarket() {
+  if (isk < FIX_MARKET_COST) { alert('Need '+fmt(FIX_MARKET_COST)+' ISK to bribe the regulators.'); return; }
+  isk -= FIX_MARKET_COST;
+  marketRigged = true;
+  riggedStock  = stocks[Math.floor(Math.random() * stocks.length)].name;
+  document.getElementById('stockModalTitle').textContent = '🎭 Fixed Exchange';
+  document.getElementById('stockModalDesc').textContent  = 'Regulators bribed. ' + riggedStock + ' is guaranteed to go up.';
+  document.getElementById('stockFixRow').innerHTML = '';
+  renderStockTickers();
+  document.getElementById('stockResult').textContent = '✅ The market is under your control.';
+  document.getElementById('stockResult').className  = 'win-res';
+}
+
+function closeStock() {
+  document.getElementById('stockModal').classList.remove('show');
+}
+
+// ════════════════════════════════════════════════════════════
+//  MARRY
+// ════════════════════════════════════════════════════════════
+function marryBanker() {
+  if (married) return;
+  if (isk < 100_000) return;
+  if (isk < MARRY_COST) { alert('Need '+fmt(MARRY_COST)+' ISK for the wedding. Appearances matter.'); return; }
+  isk -= MARRY_COST;
+  married = true; incomeMulti = calcIncomeMulti();
+  document.getElementById('marriedBadge').classList.add('active');
+  document.getElementById('marryCard').style.cursor = 'default';
+  document.querySelector('#marryCard .action-desc').textContent =
+    'Married into the financial elite. All income doubled. The prenup is… creative.';
+  alert('💍 Congratulations! All income is now doubled.');
+}
+
+// ════════════════════════════════════════════════════════════
+//  PRESTIGE
+// ════════════════════════════════════════════════════════════
+function doPrestige() {
+  if (isk < PRESTIGE_THRESHOLD) return;
+  if (!confirm('Go back to the polls?\n\nYou lose all upgrades and ISK but keep your Corruption Level.\nIncome multiplier increases by +50% permanently.')) return;
+
+  prestigeLevel++;
+  isk = 0; totalEarned = 0; totalClicks = 0;
+  clickPower = 1; iskPerSec = 0;
+  married = false; marketRigged = false; riggedStock = null;
+  stockBetsPlaced = 0; taxCooldown = false;
+  taxUnlocked = false; stockUnlocked = false; gameWon = false;
+  startTime = Date.now();
+  incomeMulti = calcIncomeMulti();
+
+  for (const d of [...clickUpgradeDefs, ...autoUpgradeDefs]) d.owned = 0;
+
+  document.getElementById('marriedBadge').classList.remove('active');
+  document.getElementById('taxCard').classList.add('locked');
+  document.getElementById('stockCard').classList.add('locked');
+  document.getElementById('marryCard').classList.add('locked');
+  document.getElementById('prestigeCard').classList.add('locked');
+  document.getElementById('taxMeta').textContent   = 'Unlocks at 500 ISK';
+  document.getElementById('taxMeta').className     = 'action-meta muted';
+  document.getElementById('stockMeta').textContent = 'Unlocks at 10,000 ISK';
+  document.getElementById('stockMeta').className   = 'action-meta muted';
+  document.getElementById('marryMeta').textContent = 'Unlocks at 100,000 ISK';
+  document.getElementById('marryMeta').className   = 'action-meta muted';
+
+  saveGame();
+  buildUpgrades();
+  updateDisplay();
+  alert(`🏅 Corruption Level ${prestigeLevel}! Income multiplier is now ×${calcIncomeMulti().toFixed(1)}`);
+}
+
+// ════════════════════════════════════════════════════════════
+//  UI UPDATE
+// ════════════════════════════════════════════════════════════
+function updateDisplay() {
+  document.getElementById('iskDisplay').textContent       = fmt(isk);
+  document.getElementById('ipsDisplay').textContent       = '+' + fmt(iskPerSec * incomeMulti) + ' ISK/sec';
+  document.getElementById('statPrestige').textContent     = prestigeLevel;
+  document.getElementById('statMulti').textContent        = '×' + calcIncomeMulti().toFixed(2);
+  document.getElementById('totalClicks').textContent      = totalClicks.toLocaleString();
+  document.getElementById('totalEarned').textContent      = fmt(totalEarned) + ' ISK';
+  document.getElementById('statClick').textContent        = fmt(clickPower * incomeMulti) + ' ISK';
+  document.getElementById('statIPS').textContent          = fmt(iskPerSec * incomeMulti);
+  document.getElementById('clickValueDisplay').textContent =
+    '+' + fmt(clickPower * incomeMulti) + ' ISK per click' + (incomeMulti > 1 ? ' (×'+incomeMulti.toFixed(1)+')' : '');
+
+  const pct = Math.min(isk / WIN_AMOUNT * 100, 100);
+  document.getElementById('progressBar').style.width  = pct.toFixed(2) + '%';
+  document.getElementById('progressLabel').textContent =
+    fmt(isk) + ' / ' + fmt(WIN_AMOUNT) + ' ISK';
+
+  updateSpecialCards();
+}
+
+// ════════════════════════════════════════════════════════════
+//  WIN
+// ════════════════════════════════════════════════════════════
+function checkWin() {
+  if (!gameWon && isk >= WIN_AMOUNT) {
+    gameWon = true;
+    const e = Math.floor((Date.now() - startTime) / 1000);
+    document.getElementById('finalTime').textContent = Math.floor(e/60)+'m '+( e%60)+'s';
+    document.getElementById('winOverlay').classList.add('show');
+  }
+}
+
+// ════════════════════════════════════════════════════════════
+//  RESTART
+// ════════════════════════════════════════════════════════════
+function confirmNewTerm() {
+  if (confirm('Are you sure? All progress will be lost.')) restartGame();
+}
+
+function restartGame() {
+  isk = 0; totalEarned = 0; totalClicks = 0;
+  clickPower = 1; iskPerSec = 0; incomeMulti = 1;
+  gameWon = false; taxCooldown = false;
+  taxUnlocked = false; stockUnlocked = false;
+  marketRigged = false; married = false;
+  riggedStock = null; stockBetsPlaced = 0;
+  startTime = Date.now();
+  for (const d of [...clickUpgradeDefs, ...autoUpgradeDefs]) d.owned = 0;
+  document.getElementById('winOverlay').classList.remove('show');
+  document.getElementById('marriedBadge').classList.remove('active');
+  document.getElementById('taxCard').classList.add('locked');
+  document.getElementById('stockCard').classList.add('locked');
+  document.getElementById('marryCard').classList.add('locked');
+  document.getElementById('taxMeta').textContent   = 'Unlocks at 500 ISK';
+  document.getElementById('taxMeta').className     = 'action-meta muted';
+  document.getElementById('stockMeta').textContent = 'Unlocks at 10,000 ISK';
+  document.getElementById('stockMeta').className   = 'action-meta muted';
+  document.getElementById('marryMeta').textContent = 'Unlocks at 100,000 ISK';
+  document.getElementById('marryMeta').className   = 'action-meta muted';
+  localStorage.removeItem(SAVE_KEY);
+  updateDisplay(); renderUpgrades();
+}
+
+// ════════════════════════════════════════════════════════════
+//  GAME LOOP
+// ════════════════════════════════════════════════════════════
+let lastTick = Date.now();
+function gameLoop() {
+  if (!gameWon && iskPerSec > 0) {
+    const now = Date.now();
+    const dt  = (now - lastTick) / 1000;
+    lastTick  = now;
+    const g = iskPerSec * incomeMulti * dt;
+    isk += g; totalEarned += g;
+    checkWin();
+  } else {
+    lastTick = Date.now();
+  }
+  updateDisplay(); renderUpgrades();
+  requestAnimationFrame(gameLoop);
+}
+
+// ════════════════════════════════════════════════════════════
+//  SAVE / LOAD
+// ════════════════════════════════════════════════════════════
+const SAVE_KEY = 'althingi_clicker_save';
+
+function saveGame() {
+  const data = {
+    isk, totalEarned, totalClicks, clickPower, iskPerSec, incomeMulti,
+    gameWon, married, marketRigged, riggedStock, stockBetsPlaced,
+    taxUnlocked, stockUnlocked, prestigeLevel,
+    clickOwned: clickUpgradeDefs.map(d => d.owned),
+    autoOwned:  autoUpgradeDefs.map(d => d.owned),
+    elapsed: Date.now() - startTime,
+  };
+  localStorage.setItem(SAVE_KEY, JSON.stringify(data));
+}
+
+function loadGame() {
+  const raw = localStorage.getItem(SAVE_KEY);
+  if (!raw) return;
+  try {
+    const d = JSON.parse(raw);
+    isk            = d.isk            ?? 0;
+    totalEarned    = d.totalEarned    ?? 0;
+    totalClicks    = d.totalClicks    ?? 0;
+    clickPower     = d.clickPower     ?? 1;
+    iskPerSec      = d.iskPerSec      ?? 0;
+    incomeMulti    = d.incomeMulti    ?? 1;
+    gameWon        = d.gameWon        ?? false;
+    married        = d.married        ?? false;
+    marketRigged   = d.marketRigged   ?? false;
+    riggedStock    = d.riggedStock    ?? null;
+    stockBetsPlaced= d.stockBetsPlaced?? 0;
+    taxUnlocked    = d.taxUnlocked    ?? false;
+    stockUnlocked  = d.stockUnlocked  ?? false;
+    prestigeLevel  = d.prestigeLevel  ?? 0;
+    startTime      = Date.now() - (d.elapsed ?? 0);
+
+    if (d.clickOwned) clickUpgradeDefs.forEach((def, i) => { def.owned = d.clickOwned[i] ?? 0; });
+    if (d.autoOwned)  autoUpgradeDefs.forEach( (def, i) => { def.owned = d.autoOwned[i]  ?? 0; });
+
+    if (married) document.getElementById('marriedBadge').classList.add('active');
+  } catch(e) {
+    console.warn('Save corrupted, starting fresh.', e);
+  }
+}
+
+loadGame();
+buildUpgrades();
+renderUpgrades();
+updateDisplay();
+setInterval(saveGame, 5000);  // autosave every 5 seconds
+requestAnimationFrame(gameLoop);
+</script>
+</body>
+</html>
