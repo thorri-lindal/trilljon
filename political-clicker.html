@@ -1014,10 +1014,10 @@ body {
         Ævisaga þín, <em>„Þjóna þjóðinni (mér)"</em>, er þegar meðseldar bók.
         Minnisvarði er í smíðum — fjármagnaður af ráðuneytinu, að sjálfsögðu.
       </p>
-      <div class="win-time">Time: <span id="finalTime">--</span></div>
+      <div class="win-time">Tími: <span id="finalTime">--</span></div>
     </div>
     <div class="win-footer">
-      <button class="btn-primary" onclick="restartGame()">Start New Term</button>
+      <button class="btn-primary" onclick="restartGame()">Hefja nýtt kjörtímabil</button>
     </div>
   </div>
 </div>
@@ -1058,22 +1058,22 @@ function calcIncomeMulti(level = prestigeLevel) {
 //  UPGRADE DEFINITIONS
 // ════════════════════════════════════════════════════════════
 const clickUpgradeDefs = [
-  { id:'pocket',     icon:'🪙', name:'Vasapeningar',                desc:'Skim a little off every project budget.',            baseCost:10,         costMult:1.3,  clickBonus:1,     owned:0 },
-  { id:'invoice',    icon:'🧾', name:'Týnd kvittun',              desc:'Bill the ministry for services never rendered.',     baseCost:100,        costMult:1.35, clickBonus:5,     owned:0 },
-  { id:'consultant', icon:'👔', name:'Ráða frænda',               desc:'Your cousin is an "expert consultant".',             baseCost:500,        costMult:1.4,  clickBonus:20,    owned:0 },
-  { id:'offshore',   icon:'🏝️', name:'Aflandafélag',              desc:'Nothing says trust like a Cayman Islands LLC.',      baseCost:5_000,      costMult:1.4,  clickBonus:100,   owned:0 },
-  { id:'briefcase',  icon:'💼', name:'Íþróttataska af seðlum',    desc:'Untraceable cash, diplomatic immunity.',             baseCost:50_000,     costMult:1.45, clickBonus:500,   owned:0 },
-  { id:'pardon',     icon:'📜', name:'Tilbúinn fyrirgefningar ræða', desc:'Why worry when you can legislate away guilt?',    baseCost:1_000_000,  costMult:1.5,  clickBonus:5_000, owned:0 },
+  { id:'pocket',     icon:'🪙', name:'Vasapeningar',                desc:'Skerðu örlítið af hverju verkefnafjármagni.',                    baseCost:10,         costMult:1.3,  clickBonus:1,     owned:0 },
+  { id:'invoice',    icon:'🧾', name:'Týnd kvittun',              desc:'Reikningsfærðu ráðuneytið fyrir þjónustu sem aldrei var veitt.',  baseCost:100,        costMult:1.35, clickBonus:5,     owned:0 },
+  { id:'consultant', icon:'👔', name:'Ráða frænda',               desc:'Frændi þinn er "sérfræðingur í ráðgjöf".',                        baseCost:500,        costMult:1.4,  clickBonus:20,    owned:0 },
+  { id:'offshore',   icon:'🏝️', name:'Aflandafélag',              desc:'Ekkert gefur til kynna traust eins og Cayman-eyjar EHF.',         baseCost:5_000,      costMult:1.4,  clickBonus:100,   owned:0 },
+  { id:'briefcase',  icon:'💼', name:'Íþróttataska af seðlum',    desc:'Órekjanlegir peningaseðlar, diplómatískt friðhelgi.',              baseCost:50_000,     costMult:1.45, clickBonus:500,   owned:0 },
+  { id:'pardon',     icon:'📜', name:'Tilbúinn fyrirgefningar ræða', desc:'Af hverju hafa áhyggjur þegar hægt er að lögfesta sekt í burtu?', baseCost:1_000_000, costMult:1.5,  clickBonus:5_000, owned:0 },
 ];
 
 const autoUpgradeDefs = [
-  { id:'lobbyist', icon:'🤝', name:'Lobbíisti á launaskrá',  desc:'They call it networking.',                      baseCost:50,          costMult:1.15, ipsBonus:1,      owned:0 },
-  { id:'intern',   icon:'📚', name:'Ólaunaður starfskraftur', desc:'They work. You collect.',                      baseCost:250,         costMult:1.15, ipsBonus:5,      owned:0 },
-  { id:'shellco',  icon:'🏢', name:'Skúffufyrirtæki',        desc:'Incorporated in three countries. Taxed in none.', baseCost:2_000,     costMult:1.15, ipsBonus:20,     owned:0 },
-  { id:'ministry', icon:'🏛️', name:'Ný nefnd',               desc:"The ministry works for you.",                   baseCost:15_000,      costMult:1.15, ipsBonus:100,    owned:0 },
-  { id:'contract', icon:'✍️', name:'Opinbert útboð',         desc:"Competition is socialism.",                     baseCost:100_000,     costMult:1.15, ipsBonus:500,    owned:0 },
-  { id:'pension',  icon:'👴', name:'Lífeyrissjóðirnir',      desc:"They won't retire for decades anyway.",          baseCost:1_000_000,   costMult:1.15, ipsBonus:2_500,  owned:0 },
-  { id:'bank',     icon:'🏦', name:'Ríkisbankinn',           desc:"Why borrow when you ARE the bank?",             baseCost:25_000_000,  costMult:1.15, ipsBonus:20_000, owned:0 },
+  { id:'lobbyist', icon:'🤝', name:'Lobbíisti á launaskrá',  desc:'Þeir kalla það tengslamyndun.',                          baseCost:50,          costMult:1.15, ipsBonus:1,      owned:0 },
+  { id:'intern',   icon:'📚', name:'Ólaunaður starfskraftur', desc:'Þeir vinna. Þú innheimtir.',                            baseCost:250,         costMult:1.15, ipsBonus:5,      owned:0 },
+  { id:'shellco',  icon:'🏢', name:'Skúffufyrirtæki',        desc:'Skráð í þremur löndum. Skattlagt í engu.',               baseCost:2_000,       costMult:1.15, ipsBonus:20,     owned:0 },
+  { id:'ministry', icon:'🏛️', name:'Ný nefnd',               desc:'Ráðuneytið vinnur fyrir þig.',                          baseCost:15_000,      costMult:1.15, ipsBonus:100,    owned:0 },
+  { id:'contract', icon:'✍️', name:'Opinbert útboð',         desc:'Samkeppni er sósíalismi.',                               baseCost:100_000,     costMult:1.15, ipsBonus:500,    owned:0 },
+  { id:'pension',  icon:'👴', name:'Lífeyrissjóðirnir',      desc:'Þeir fara ekki á eftirlaun í áratugi.',                  baseCost:1_000_000,   costMult:1.15, ipsBonus:2_500,  owned:0 },
+  { id:'bank',     icon:'🏦', name:'Ríkisbankinn',           desc:'Af hverju að taka lán þegar þú ERT bankinn?',            baseCost:25_000_000,  costMult:1.15, ipsBonus:20_000, owned:0 },
 ];
 
 // ════════════════════════════════════════════════════════════
@@ -1206,10 +1206,10 @@ function updateSpecialCards() {
     taxUnlocked = true;
     taxCard.classList.remove('locked');
     if (taxCooldown) {
-      taxMeta.textContent = 'On cooldown…';
+      taxMeta.textContent = 'Í bið…';
       taxMeta.className   = 'action-meta warn';
     } else {
-      taxMeta.textContent = 'Ready · Cost: '+fmt(TAX_COST)+' ISK';
+      taxMeta.textContent = 'Tilbúið · Kostnaður: '+fmt(TAX_COST)+' ISK';
       taxMeta.className   = 'action-meta';
     }
   }
@@ -1217,7 +1217,7 @@ function updateSpecialCards() {
   if (isk >= 10_000 || stockUnlocked) {
     stockUnlocked = true;
     stockCard.classList.remove('locked');
-    stockMeta.textContent = marketRigged ? '🎭 Market is rigged' : 'Open';
+    stockMeta.textContent = marketRigged ? '🎭 Markaðurinn er lagfærður' : 'Opið';
     stockMeta.className   = 'action-meta';
     stockMeta.style.color = marketRigged ? 'var(--red)' : 'var(--green)';
   }
@@ -1225,16 +1225,16 @@ function updateSpecialCards() {
   if (married) {
     marryCard.classList.remove('locked');
     marryCard.style.cursor = 'default';
-    marryMeta.textContent  = '💍 Happily (and lucratively) married';
+    marryMeta.textContent  = '💍 Giftur og gæfusamur';
     marryMeta.className    = 'action-meta';
     marryMeta.style.color  = 'var(--red)';
   } else if (isk >= 100_000) {
     marryCard.classList.remove('locked');
-    marryMeta.textContent = 'Cost: '+fmt(MARRY_COST)+' ISK';
+    marryMeta.textContent = 'Kostnaður: '+fmt(MARRY_COST)+' ISK';
     marryMeta.className   = 'action-meta';
     marryMeta.style.color = 'var(--navy)';
   } else {
-    marryMeta.textContent   = 'Unlocks at 100,000 ISK';
+    marryMeta.textContent   = 'Opnast við 100.000 ISK';
     marryMeta.className     = 'action-meta muted';
   }
 
@@ -1242,11 +1242,11 @@ function updateSpecialCards() {
   const prestigeMeta = document.getElementById('prestigeMeta');
   if (isk >= PRESTIGE_THRESHOLD) {
     prestigeCard.classList.remove('locked');
-    prestigeMeta.textContent = `Level ${prestigeLevel + 1} → ×${calcIncomeMulti(prestigeLevel + 1).toFixed(1)} all income`;
+    prestigeMeta.textContent = `Stig ${prestigeLevel + 1} → ×${calcIncomeMulti(prestigeLevel + 1).toFixed(1)} allar tekjur`;
     prestigeMeta.className   = 'action-meta';
     prestigeMeta.style.color = 'var(--gold)';
   } else {
-    prestigeMeta.textContent = `Unlocks at ${fmt(PRESTIGE_THRESHOLD)} ISK`;
+    prestigeMeta.textContent = `Opnast við ${fmt(PRESTIGE_THRESHOLD)} ISK`;
     prestigeMeta.className   = 'action-meta muted';
     prestigeMeta.style.color = '';
   }
@@ -1257,13 +1257,13 @@ function updateSpecialCards() {
 // ════════════════════════════════════════════════════════════
 function openTaxFraud() {
   if (!taxUnlocked || taxCooldown) return;
-  if (isk < TAX_COST) { alert('Not enough ISK!'); return; }
+  if (isk < TAX_COST) { alert('Ekki nóg ISK!'); return; }
   isk -= TAX_COST;
   taxWager = TAX_COST; taxMultiplier = 1; taxRevealed = 0; taxGameActive = true;
   taxBoard = [...TAX_ICONS].sort(() => Math.random()-0.5);
   document.getElementById('taxWagerDisplay').textContent = fmt(taxWager);
   renderTaxGrid();
-  document.getElementById('taxStatus').textContent = 'Click a document…';
+  document.getElementById('taxStatus').textContent = 'Smelltu á skjal…';
   document.getElementById('taxModal').classList.add('show');
 }
 
@@ -1294,16 +1294,16 @@ function revealTaxCell(idx) {
     taxMultiplier *= 2; taxRevealed++;
     cell.classList.add('revealed-win');
     st.innerHTML = `💰 Margfaldari ×${taxMultiplier} — hugsanlegt: <strong>${fmt(taxWager * taxMultiplier)} ISK</strong>.
-      <button onclick="collectTaxWin()" style="margin-left:8px;padding:3px 10px;cursor:pointer;border-radius:3px;border:1px solid var(--green);background:var(--green-lt);color:var(--green);font-size:0.78rem;font-family:inherit">Collect Now</button>`;
+      <button onclick="collectTaxWin()" style="margin-left:8px;padding:3px 10px;cursor:pointer;border-radius:3px;border:1px solid var(--green);background:var(--green-lt);color:var(--green);font-size:0.78rem;font-family:inherit">Innheimta núna</button>`;
     if (taxRevealed === 3) collectTaxWin();
   } else if (icon === '🔍') {
     cell.classList.add('revealed-lose');
     taxGameActive = false; revealAllTax();
-    st.innerHTML = `<span style="color:var(--red)">🔍 Auditor! You've been investigated. Wager lost.</span>`;
+    st.innerHTML = `<span style="color:var(--red)">🔍 Endurskoðandi! Þú ert rannsökuð. Veðmál glatað.</span>`;
     startTaxCooldown();
   } else {
     cell.classList.add('revealed-meh');
-    st.textContent = '📄 Nothing here. Keep looking…';
+    st.textContent = '📄 Ekkert hér. Haltu áfram…';
   }
 }
 
@@ -1314,7 +1314,7 @@ function collectTaxWin() {
   addIsk(win);
   revealAllTax();
   document.getElementById('taxStatus').innerHTML =
-    `<span style="color:var(--green)">✅ Returns filed! +${fmt(win)} ISK collected.</span>`;
+    `<span style="color:var(--green)">✅ Skil móttekin! +${fmt(win)} ISK innheimt.</span>`;
   startTaxCooldown();
 }
 
@@ -1336,7 +1336,7 @@ function startTaxCooldown() {
   const iv = setInterval(() => {
     s--;
     const el = document.getElementById('taxMeta');
-    if (el) el.textContent = `Cooldown: ${s}s`;
+    if (el) el.textContent = `Í bið: ${s}s`;
     if (s <= 0) { clearInterval(iv); taxCooldown = false; }
   }, 1000);
 }
@@ -1363,12 +1363,12 @@ function openStockMarket() {
   if (marketRigged) {
     document.getElementById('stockModalTitle').textContent = '🎭 Lagfærður markaður';
     document.getElementById('stockModalDesc').textContent =
-      'Market fixed. ' + riggedStock + ' is guaranteed to go up.';
+      'Markaðurinn lagfærður. ' + riggedStock + ' mun alltaf hækka.';
     document.getElementById('stockFixRow').innerHTML = '';
   } else {
     document.getElementById('stockModalTitle').textContent = '📈 Hlutabréfamarkaður';
     document.getElementById('stockModalDesc').textContent =
-      'Pick a stock. Place a bet. Win = ×2. Lose = gone.';
+      'Veldu hlutabréf. Settu veðmál. Vinnur = ×2. Tapar = farið.';
     updateFixRow();
   }
 
@@ -1381,7 +1381,7 @@ function updateFixRow() {
   if (!marketRigged && stockBetsPlaced >= FIX_BET_UNLOCK) {
     row.innerHTML = `<button class="fix-market-btn" onclick="fixMarket()">🎭 Laga markað (${fmt(FIX_MARKET_COST)} ISK)</button>`;
   } else if (!marketRigged) {
-    row.innerHTML = `<div style="font-size:0.76rem;color:var(--gray-400);margin-bottom:8px">Rig Market unlocks after ${FIX_BET_UNLOCK} bets (${stockBetsPlaced}/${FIX_BET_UNLOCK})</div>`;
+    row.innerHTML = `<div style="font-size:0.76rem;color:var(--gray-400);margin-bottom:8px">Laga markað opnast eftir ${FIX_BET_UNLOCK} veðmál (${stockBetsPlaced}/${FIX_BET_UNLOCK})</div>`;
   }
 }
 
@@ -1398,7 +1398,7 @@ function renderStockTickers() {
       <div class="ticker-name">${s.name}</div>
       <div class="ticker-label">${s.label}</div>
       <div class="ticker-trend" style="color:${tc}">${s.trend}</div>
-      ${marketRigged && s.name===riggedStock ? '<div style="font-size:0.68rem;color:var(--red);margin-top:3px;font-weight:700">★ RIGGED</div>' : ''}`;
+      ${marketRigged && s.name===riggedStock ? '<div style="font-size:0.68rem;color:var(--red);margin-top:3px;font-weight:700">★ LAGFÆRT</div>' : ''}`;
     btn.addEventListener('click', () => { selectedStock = s.name; renderStockTickers(); });
     c.appendChild(btn);
   });
@@ -1413,10 +1413,10 @@ function addBet(amount) {
 
 function placeBet() {
   const resEl = document.getElementById('stockResult');
-  if (!selectedStock) { resEl.textContent = 'Pick a stock first!'; resEl.className=''; return; }
+  if (!selectedStock) { resEl.textContent = 'Veldu hlutabréf fyrst!'; resEl.className=''; return; }
   const betVal = parseInt(document.getElementById('betInput').value);
-  if (!betVal || betVal <= 0) { resEl.textContent = 'Enter a valid bet.'; resEl.className=''; return; }
-  if (betVal > isk) { resEl.textContent = 'Not enough ISK.'; resEl.className='lose-res'; return; }
+  if (!betVal || betVal <= 0) { resEl.textContent = 'Sláðu inn gilt veðmál.'; resEl.className=''; return; }
+  if (betVal > isk) { resEl.textContent = 'Ekki nóg ISK.'; resEl.className='lose-res'; return; }
 
   const stock = stocks.find(s => s.name === selectedStock);
   isk -= betVal; stockBetsPlaced++;
@@ -1425,10 +1425,10 @@ function placeBet() {
 
   if (win) {
     const g = addIsk(betVal * 2);
-    resEl.innerHTML = `📈 ${stock.name} surged! +${fmt(g)} ISK`;
+    resEl.innerHTML = `📈 ${stock.name} fór upp! +${fmt(g)} ISK`;
     resEl.className = 'win-res';
   } else {
-    resEl.innerHTML = `📉 ${stock.name} crashed. Lost ${fmt(betVal)} ISK.`;
+    resEl.innerHTML = `📉 ${stock.name} hrundi. Tapaðir ${fmt(betVal)} ISK.`;
     resEl.className = 'lose-res';
   }
 
@@ -1436,15 +1436,15 @@ function placeBet() {
 }
 
 function fixMarket() {
-  if (isk < FIX_MARKET_COST) { alert('Need '+fmt(FIX_MARKET_COST)+' ISK to bribe the regulators.'); return; }
+  if (isk < FIX_MARKET_COST) { alert('Þarft '+fmt(FIX_MARKET_COST)+' ISK til að múta eftirlitsmenn.'); return; }
   isk -= FIX_MARKET_COST;
   marketRigged = true;
   riggedStock  = stocks[Math.floor(Math.random() * stocks.length)].name;
-  document.getElementById('stockModalTitle').textContent = '🎭 Fixed Exchange';
-  document.getElementById('stockModalDesc').textContent  = 'Regulators bribed. ' + riggedStock + ' is guaranteed to go up.';
+  document.getElementById('stockModalTitle').textContent = '🎭 Lagfærður markaður';
+  document.getElementById('stockModalDesc').textContent  = 'Eftirlitsmenn múttir. ' + riggedStock + ' mun alltaf hækka.';
   document.getElementById('stockFixRow').innerHTML = '';
   renderStockTickers();
-  document.getElementById('stockResult').textContent = '✅ The market is under your control.';
+  document.getElementById('stockResult').textContent = '✅ Markaðurinn er undir stjórn þinni.';
   document.getElementById('stockResult').className  = 'win-res';
 }
 
@@ -1458,14 +1458,14 @@ function closeStock() {
 function marryBanker() {
   if (married) return;
   if (isk < 100_000) return;
-  if (isk < MARRY_COST) { alert('Need '+fmt(MARRY_COST)+' ISK for the wedding. Appearances matter.'); return; }
+  if (isk < MARRY_COST) { alert('Þarft '+fmt(MARRY_COST)+' ISK fyrir brúðkaupið. Yfirbragðið skiptir máli.'); return; }
   isk -= MARRY_COST;
   married = true; incomeMulti = calcIncomeMulti();
   document.getElementById('marriedBadge').classList.add('active');
   document.getElementById('marryCard').style.cursor = 'default';
   document.querySelector('#marryCard .action-desc').textContent =
-    'Married into the financial elite. All income doubled. The prenup is… creative.';
-  alert('💍 Congratulations! All income is now doubled.');
+    'Giftur í fjármálayfirstéttina. Allar tekjur tvöfaldar. Hjúskaparsamningurinn er… skapandi.';
+  alert('💍 Til hamingju! Allar tekjur eru nú tvöfaldar.');
 }
 
 // ════════════════════════════════════════════════════════════
@@ -1473,7 +1473,7 @@ function marryBanker() {
 // ════════════════════════════════════════════════════════════
 function doPrestige() {
   if (isk < PRESTIGE_THRESHOLD) return;
-  if (!confirm('Go back to the polls?\n\nYou lose all upgrades and ISK but keep your Corruption Level.\nIncome multiplier increases by +50% permanently.')) return;
+  if (!confirm('Fara aftur í kjör?\n\nÞú missir allar uppfærslur og ISK en heldur spillingarstiginu.\nTekjumargfaldari hækkar um +50% að eilífu.')) return;
 
   prestigeLevel++;
   isk = 0; totalEarned = 0; totalClicks = 0;
@@ -1491,17 +1491,17 @@ function doPrestige() {
   document.getElementById('stockCard').classList.add('locked');
   document.getElementById('marryCard').classList.add('locked');
   document.getElementById('prestigeCard').classList.add('locked');
-  document.getElementById('taxMeta').textContent   = 'Unlocks at 500 ISK';
+  document.getElementById('taxMeta').textContent   = 'Opnast við 500 ISK';
   document.getElementById('taxMeta').className     = 'action-meta muted';
-  document.getElementById('stockMeta').textContent = 'Unlocks at 10,000 ISK';
+  document.getElementById('stockMeta').textContent = 'Opnast við 10.000 ISK';
   document.getElementById('stockMeta').className   = 'action-meta muted';
-  document.getElementById('marryMeta').textContent = 'Unlocks at 100,000 ISK';
+  document.getElementById('marryMeta').textContent = 'Opnast við 100.000 ISK';
   document.getElementById('marryMeta').className   = 'action-meta muted';
 
   saveGame();
   buildUpgrades();
   updateDisplay();
-  alert(`🏅 Corruption Level ${prestigeLevel}! Income multiplier is now ×${calcIncomeMulti().toFixed(1)}`);
+  alert(`🏅 Spillingarstig ${prestigeLevel}! Tekjumargfaldari er nú ×${calcIncomeMulti().toFixed(1)}`);
 }
 
 // ════════════════════════════════════════════════════════════
@@ -1509,7 +1509,7 @@ function doPrestige() {
 // ════════════════════════════════════════════════════════════
 function updateDisplay() {
   document.getElementById('iskDisplay').textContent       = fmt(isk);
-  document.getElementById('ipsDisplay').textContent       = '+' + fmt(iskPerSec * incomeMulti) + ' ISK/sec';
+  document.getElementById('ipsDisplay').textContent       = '+' + fmt(iskPerSec * incomeMulti) + ' ISK/sek';
   document.getElementById('statPrestige').textContent     = prestigeLevel;
   document.getElementById('statMulti').textContent        = '×' + calcIncomeMulti().toFixed(2);
   document.getElementById('totalClicks').textContent      = totalClicks.toLocaleString();
@@ -1543,7 +1543,7 @@ function checkWin() {
 //  RESTART
 // ════════════════════════════════════════════════════════════
 function confirmNewTerm() {
-  if (confirm('Are you sure? All progress will be lost.')) restartGame();
+  if (confirm('Ertu viss? Öll framfarir glatast.')) restartGame();
 }
 
 function restartGame() {
@@ -1560,11 +1560,11 @@ function restartGame() {
   document.getElementById('taxCard').classList.add('locked');
   document.getElementById('stockCard').classList.add('locked');
   document.getElementById('marryCard').classList.add('locked');
-  document.getElementById('taxMeta').textContent   = 'Unlocks at 500 ISK';
+  document.getElementById('taxMeta').textContent   = 'Opnast við 500 ISK';
   document.getElementById('taxMeta').className     = 'action-meta muted';
-  document.getElementById('stockMeta').textContent = 'Unlocks at 10,000 ISK';
+  document.getElementById('stockMeta').textContent = 'Opnast við 10.000 ISK';
   document.getElementById('stockMeta').className   = 'action-meta muted';
-  document.getElementById('marryMeta').textContent = 'Unlocks at 100,000 ISK';
+  document.getElementById('marryMeta').textContent = 'Opnast við 100.000 ISK';
   document.getElementById('marryMeta').className   = 'action-meta muted';
   localStorage.removeItem(SAVE_KEY);
   updateDisplay(); renderUpgrades();
